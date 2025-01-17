@@ -1,0 +1,79 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  clerkId   String   @unique
+  username  String
+  email     String   @unique
+  hasAvatar Boolean
+  avatarUrl String
+  isAdmin   Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Product {
+  id                 String   @id @default(auto()) @map("_id") @db.ObjectId
+  mainImage          String
+  optionalImages     String[] @default([])
+  name               String   @unique
+  description        String
+  price              Int
+  discount           Int      @default(0)
+  discountedPrice    Int
+  discountPercentage Int
+  category           String
+  brand              String?
+  stockQuantity      Int
+  isAvailable        Boolean  @default(true)
+  message            String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model Cart {
+  id           String        @id @default(auto()) @map("_id") @db.ObjectId
+  addedBy      String        @unique
+  cartProducts CartProduct[]
+  totalPrice   Int
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  Order        Order[]
+}
+
+type CartProduct {
+  productId String
+  quantity  Int
+  price     Int
+}
+
+model Order {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  customerName  String
+  customerEmail String?
+  phone         String
+  address       Json
+  orderedProducts Json[]
+  status        String   @default("pending")
+  totalPrice    Int
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  cart          Cart?    @relation(fields: [cartId], references: [id])
+  cartId        String?  @unique @db.ObjectId
+}
+
+// type Address {
+//   province String
+//   city     String
+//   area     String
+//   street   String
+//   house    String
+//   zipCode  String
+// }
