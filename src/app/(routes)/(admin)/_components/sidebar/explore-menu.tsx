@@ -1,7 +1,5 @@
 import { Home, ListCollapseIcon } from "lucide-react";
 import {
-  Sidebar,
-  SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,

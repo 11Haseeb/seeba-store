@@ -1,7 +1,6 @@
 import React from "react";
 import { SignedIn, UserButton } from "@clerk/nextjs";
 import Logo from "@/components/logo";
-import Link from "next/link";
 
 const Navbar = () => {
   return (

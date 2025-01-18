@@ -64,17 +64,19 @@ export async function POST(request: Request) {
 
       return ApiResponse(200, "Product added to cart", updatedCart);
     }
-  } catch (error: any) {
-    return ApiError(
-      500,
-      "Something went wrong while adding product to cart",
-      error.message
-    );
+  } catch (error) {
+    if (error instanceof Error) {
+      return ApiError(
+        500,
+        "Something went wrong while adding product to cart",
+        error.message
+      );
+    }
   }
 }
 
 // Get Cart
-export async function GET(request: Request) {
+export async function GET() {
   try {
     const user = await currentUser();
 
@@ -83,12 +85,14 @@ export async function GET(request: Request) {
     });
 
     return ApiResponse(200, "Cart fetched successfully", cart);
-  } catch (error: any) {
-    return ApiError(
-      500,
-      "Something went wrong while fetching cart",
-      error.message
-    );
+  } catch (error) {
+    if (error instanceof Error) {
+      return ApiError(
+        500,
+        "Something went wrong while fetching cart",
+        error.message
+      );
+    }
   }
 }
 
@@ -125,11 +129,13 @@ export async function PATCH(request: Request) {
     });
 
     return ApiResponse(200, "Product removed from cart", updatedCart);
-  } catch (error: any) {
-    return ApiError(
-      500,
-      "Something went wrong while removing product from cart",
-      error.message
-    );
+  } catch (error) {
+    if (error instanceof Error) {
+      return ApiError(
+        500,
+        "Something went wrong while removing product from cart",
+        error.message
+      );
+    }
   }
 }

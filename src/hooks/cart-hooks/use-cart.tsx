@@ -15,9 +15,9 @@ const useCart = () => {
   const { refetch, offRefetch } = useCartRefetch();
 
   useEffect(() => {
-    if (!isSignedIn) return;
-
     const fetchCart = () => {
+      if (!isSignedIn) return;
+
       start(async () => {
         const cartResponse = await axios.get(`/api/cart`);
 
@@ -49,7 +49,7 @@ const useCart = () => {
     };
 
     fetchCart();
-  }, [refetch]);
+  },[refetch, offRefetch, isSignedIn]);
 
   return { loading, cart, cartProducts };
 };

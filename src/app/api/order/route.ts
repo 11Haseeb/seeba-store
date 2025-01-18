@@ -1,5 +1,4 @@
 import { ApiError, ApiResponse } from "@/utils/ApiHandler";
-import { prisma } from "@/lib/prisma";
 import { inngest } from "@/inngest/client";
 
 // Create Order

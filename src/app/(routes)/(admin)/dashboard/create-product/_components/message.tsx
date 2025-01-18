@@ -7,8 +7,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
+import { Control } from "react-hook-form";
 
-const Message = ({ control }: { control: any }) => {
+const Message = ({ control }: { control: Control }) => {
   return (
     <FormField
       control={control}

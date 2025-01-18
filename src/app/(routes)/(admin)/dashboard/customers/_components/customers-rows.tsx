@@ -42,7 +42,12 @@ const CustomersRows = ({
               );
             })
           : users.map((user) => {
-              return <UserRow user={user} />;
+              return (
+                <UserRow
+                  key={user.username.toLowerCase().replace(" ", "-")}
+                  user={user}
+                />
+              );
             })}
       </TableBody>
     </Table>

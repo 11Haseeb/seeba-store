@@ -23,7 +23,7 @@ const CartProductCard = ({ cartProduct }: Props) => {
 
   return (
     <div className="flex justify-between items-center border rounded-md">
-      <Link href={`/products/${id}`}>
+      <Link href={`/product/${id}`}>
         <div className="flex items-center gap-2">
           <Image
             src={mainImage || "/product.png"}

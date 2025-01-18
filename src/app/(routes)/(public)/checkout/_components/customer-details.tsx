@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/form";
 import { Control } from "react-hook-form";
 
-const BasicDetails = ({ control }: { control: Control<any> }) => {
+const BasicDetails = ({ control }: { control: Control }) => {
   const { user } = useUser();
 
   const inputFields = [

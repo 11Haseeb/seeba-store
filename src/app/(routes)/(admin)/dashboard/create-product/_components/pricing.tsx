@@ -7,8 +7,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Control } from "react-hook-form";
 
-const Pricing = ({ control }: { control: any }) => {
+const Pricing = ({ control }: { control: Control }) => {
   return (
     <div className="grid grid-cols-2 gap-2 lg:gap-4">
       <FormField

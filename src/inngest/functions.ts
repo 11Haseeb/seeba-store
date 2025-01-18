@@ -1,6 +1,5 @@
 import { inngest } from "./client";
 import { prisma } from "@/lib/prisma";
-import { currentUser } from "@clerk/nextjs/server";
 
 // Create User
 export const createUser = inngest.createFunction(

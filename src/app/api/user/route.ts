@@ -73,6 +73,12 @@ export async function GET(request: Request) {
 
     return ApiResponse(200, "Users fetched successfully", users);
   } catch (error) {
-    return ApiError(500, "Something went wrong while fetching users", error);
+    if (error instanceof Error) {
+      return ApiError(
+        500,
+        "Something went wrong while fetching users",
+        error.message
+      );
+    }
   }
 }

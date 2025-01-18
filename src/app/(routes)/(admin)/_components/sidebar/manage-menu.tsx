@@ -3,8 +3,6 @@
 import { usePathname } from "next/navigation";
 import { List, Package, Users } from "lucide-react";
 import {
-  Sidebar,
-  SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,

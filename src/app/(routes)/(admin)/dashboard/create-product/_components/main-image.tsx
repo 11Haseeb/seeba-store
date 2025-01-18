@@ -7,8 +7,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Control } from "react-hook-form";
 
-const MainImage = ({ control }: { control: any }) => {
+const MainImage = ({ control }: { control: Control }) => {
   return (
     <FormField
       control={control}

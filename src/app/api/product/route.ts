@@ -1,5 +1,6 @@
 import { ApiError, ApiResponse } from "@/utils/ApiHandler";
 import { prisma } from "@/lib/prisma";
+import { Prisma } from "@prisma/client";
 
 // Create Product
 export async function POST(request: Request) {
@@ -45,7 +46,13 @@ export async function POST(request: Request) {
 
     return ApiResponse(201, "Product created successfully", createdProduct);
   } catch (error) {
-    return ApiError(500, "Something went wrong while creating product", error);
+    if (error instanceof Error) {
+      return ApiError(
+        500,
+        "Something went wrong while creating product",
+        error.message
+      );
+    }
   }
 }
 
@@ -60,7 +67,13 @@ export async function DELETE(request: Request) {
 
     return ApiResponse(200, "Product deleted successfully");
   } catch (error) {
-    return ApiError(500, "Something went wrong while deleting product", error);
+    if (error instanceof Error) {
+      return ApiError(
+        500,
+        "Something went wrong while deleting product",
+        error.message
+      );
+    }
   }
 }
 
@@ -81,7 +94,9 @@ export async function GET(request: Request) {
       return ApiResponse(200, "Product fetched successfully", product);
     }
 
-    let sortOptions: any = { createdAt: sort === "asc" ? "asc" : "desc" };
+    let sortOptions: Prisma.ProductOrderByWithRelationInput = {
+      createdAt: sort === "asc" ? "asc" : "desc",
+    };
     if (sort === "low-to-high") sortOptions = { price: "asc" };
     else if (sort === "high-to-low") sortOptions = { price: "desc" };
 
@@ -95,6 +110,12 @@ export async function GET(request: Request) {
 
     return ApiResponse(200, "Products fetched successfully", products);
   } catch (error) {
-    return ApiError(500, "Something went wrong while fetching products", error);
+    if (error instanceof Error) {
+      return ApiError(
+        500,
+        "Something went wrong while fetching products",
+        error.message
+      );
+    }
   }
 }

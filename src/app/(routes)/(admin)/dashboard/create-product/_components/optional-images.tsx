@@ -4,7 +4,6 @@ import {
   FileUpload,
   FileUploadHeaderTemplateOptions,
   FileUploadSelectEvent,
-  FileUploadUploadEvent,
   ItemTemplateOptions,
 } from "primereact/fileupload";
 import { ProgressBar } from "primereact/progressbar";
@@ -12,16 +11,17 @@ import { Button } from "primereact/button";
 import { Tooltip } from "primereact/tooltip";
 import { Tag } from "primereact/tag";
 import { Label } from "@/components/ui/label";
-import { Controller } from "react-hook-form";
+import { Control, Controller } from "react-hook-form";
+import Image from "next/image";
 
-const OptionalImages = ({ control }: { control: any }) => {
+const OptionalImages = ({ control }: { control: Control }) => {
   const toast = useRef<Toast>(null);
   const [totalSize, setTotalSize] = useState(0);
   const fileUploadRef = useRef<FileUpload>(null);
 
   const onTemplateSelect = (e: FileUploadSelectEvent) => {
     let _totalSize = totalSize;
-    let files = e.files;
+    const files = e.files;
 
     for (let i = 0; i < files.length; i++) {
       _totalSize += files[i].size || 0;
@@ -64,15 +64,16 @@ const OptionalImages = ({ control }: { control: any }) => {
   };
 
   const itemTemplate = (inFile: object, props: ItemTemplateOptions) => {
-    const file: any = inFile as File;
+    const file: File = inFile as File;
     return (
       <div className="flex items-center flex-wrap">
         <div className="flex items-center" style={{ width: "65%" }}>
-          <img
+          <Image
             alt={file.name}
             role="presentation"
-            src={file.objectURL}
+            src={URL.createObjectURL(file)}
             width={100}
+            height={100}
           />
           <span className="flex flex-col text-left ml-3">
             {file.name}

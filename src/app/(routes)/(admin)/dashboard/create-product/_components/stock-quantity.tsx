@@ -13,8 +13,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Control } from "react-hook-form";
 
-const StockQuantity = ({ control }: { control: any }) => {
+const StockQuantity = ({ control }: { control: Control }) => {
   return (
     <FormField
       control={control}

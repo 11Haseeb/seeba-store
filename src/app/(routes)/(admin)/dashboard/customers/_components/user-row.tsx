@@ -4,7 +4,7 @@ import { TableCell, TableRow } from "@/components/ui/table";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const UserRow = ({ user }: { user: User }) => {
-  const { id, avatarUrl, username, email, isAdmin } = user;
+  const { avatarUrl, username, email, isAdmin } = user;
 
   return (
     <TableRow>

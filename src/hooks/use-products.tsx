@@ -3,7 +3,7 @@
 import { useProductsRefetch } from "@/store/refetchStates";
 import { Product } from "@prisma/client";
 import axios from "axios";
-import { useEffect, useState, useTransition } from "react";
+import { useCallback, useEffect, useState, useTransition } from "react";
 
 const useProducts = () => {
   const [loading, start] = useTransition();
@@ -15,22 +15,20 @@ const useProducts = () => {
 
   const { refetch, offRefetch } = useProductsRefetch();
 
-  const fetchProducts = () => {
-    start(async () => {
-      const response = await axios.get(
-        `/api/product?search=${search}&sort=${sort}&limit=${limit}&offset=${offset}`
-      );
+  const fetchProducts = useCallback(async () => {
+    const response = await axios.get(
+      `/api/product?search=${search}&sort=${sort}&limit=${limit}&offset=${offset}`
+    );
 
-      if (response.status === 200) {
-        setProducts(response.data.data);
-        offRefetch();
-      }
-    });
-  };
+    if (response.status === 200) {
+      setProducts(response.data.data);
+      offRefetch();
+    }
+  }, [search, sort, limit, offset, offRefetch]);
 
   useEffect(() => {
-    fetchProducts();
-  }, [sort, limit, offset, refetch]);
+    start(async () => fetchProducts());
+  }, [refetch, fetchProducts]);
 
   return {
     loading,

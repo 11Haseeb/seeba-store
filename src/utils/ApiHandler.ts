@@ -2,13 +2,13 @@
 class ApiFailed extends Error {
   statusCode: number;
   message: string;
-  errors: any;
+  errors: unknown;
   success: boolean;
 
   constructor(
     statusCode: number,
     message: string = "Something went wrong",
-    errors: any = {},
+    errors: unknown = {},
     success: boolean = false
   ) {
     super(message);
@@ -30,7 +30,7 @@ class ApiFailed extends Error {
   static createError(
     statusCode: number,
     message: string = "Something went wrong",
-    errors: any = {}
+    errors: unknown = {}
   ) {
     const error = new ApiFailed(statusCode, message, errors);
 
@@ -45,13 +45,13 @@ class ApiFailed extends Error {
 class ApiSuccess {
   statusCode: number;
   message: string;
-  data: any;
+  data: unknown;
   success: boolean;
 
   constructor(
     statusCode: number,
     message: string = "Success",
-    data: any = {},
+    data: unknown = {},
     success: boolean = statusCode < 400
   ) {
     this.statusCode = statusCode;
@@ -72,7 +72,7 @@ class ApiSuccess {
   static createResponse(
     statusCode: number,
     message: string = "Success",
-    data: any = {}
+    data: unknown = {}
   ) {
     const response = new ApiSuccess(statusCode, message, data);
 

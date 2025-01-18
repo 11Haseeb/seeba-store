@@ -13,28 +13,21 @@ const Customers = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [search, setSearch] = useState<string>("");
   const [sort, setSort] = useState<string>("desc");
-  const [limit, setLimit] = useState<number>(20);
-  const [offset, setOffset] = useState<number>(0);
 
   const { refetch, offRefetch } = useCustomersRefetch();
 
   useEffect(() => {
-    const fetchCustomers = () => {
-      start(async () => {
-        const response = await axios.get(
-          `/api/user?search=${search}&sort=${sort}&limit=${limit}&offset=${offset}`
-        );
+    start(async () => {
+      const response = await axios.get(
+        `/api/user?search=${search}&sort=${sort}`
+      );
 
-        if (response.status === 200) {
-          setUsers(response.data.data);
-          offRefetch();
-          console.log(response);
-        }
-      });
-    };
-
-    fetchCustomers();
-  }, [search, sort, limit, offset, refetch]);
+      if (response.status === 200) {
+        setUsers(response.data.data);
+        offRefetch();
+      }
+    });
+  }, [search, sort, refetch, offRefetch]);
 
   return (
     <section>

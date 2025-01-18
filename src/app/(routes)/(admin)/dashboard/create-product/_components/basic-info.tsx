@@ -8,8 +8,9 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Control } from "react-hook-form";
 
-const BasicInfo = ({ control }: { control: any }) => {
+const BasicInfo = ({ control }: { control: Control }) => {
   return (
     <>
       <FormField

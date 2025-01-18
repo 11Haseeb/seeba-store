@@ -56,7 +56,7 @@ const ImagesCarousel = ({ loading, product }: Props) => {
           </CarouselItem>
           {product?.optionalImages.map((image) => {
             return (
-              <CarouselItem className="grid place-items-center">
+              <CarouselItem key={image} className="grid place-items-center">
                 <Image
                   src={image || "/product.png"}
                   height={100}

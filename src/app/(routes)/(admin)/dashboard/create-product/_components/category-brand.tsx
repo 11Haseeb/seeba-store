@@ -14,8 +14,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Control } from "react-hook-form";
 
-const CategoryBrand = ({ control }: { control: any }) => {
+const CategoryBrand = ({ control }: { control: Control }) => {
   const options = [
     "Accessories",
     "Gaming Combo",
