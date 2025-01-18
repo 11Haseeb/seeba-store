@@ -32,8 +32,8 @@ const CartProductCard = ({ cartProduct }: Props) => {
             alt={name}
           />
           <div>
-            <h2>{name}</h2>
-            <h3 className="text-sm">
+            <h2 className="line-clamp-1">{name}</h2>
+            <h3 className="text-sm line-clamp-1">
               {discountedPrice > 0 ? discountedPrice : price} x {quantity} ={" "}
               {(discountedPrice > 0 ? discountedPrice : price) * quantity}{" "}
               <span className="text-green-500 font-semibold">PKR</span>

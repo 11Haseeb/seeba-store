@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/form";
 import { Control } from "react-hook-form";
 
-const BasicDetails = ({ control }: { control: Control }) => {
+const CustomerDetails = ({ control }: { control: Control }) => {
   const { user } = useUser();
 
   const inputFields = [
@@ -73,4 +73,4 @@ const BasicDetails = ({ control }: { control: Control }) => {
   });
 };
 
-export default BasicDetails;
+export default CustomerDetails;

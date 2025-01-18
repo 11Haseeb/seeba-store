@@ -25,13 +25,11 @@ const Product = () => {
   }, [productId]);
 
   return (
-    <div className="px-2 md:px-6 lg:px-8 py-12 grid gap-8">
-      <section>
-        <div className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-2 lg:gap-6">
-          <ImagesCarousel loading={loading} product={product as ProductType} />
-          <BasicInfo loading={loading} product={product as ProductType} />
-        </div>
-      </section>
+    <div className="px-2 md:px-6 lg:px-8 py-12 space-y-8">
+      <header className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-2 lg:gap-6">
+        <ImagesCarousel loading={loading} product={product as ProductType} />
+        <BasicInfo loading={loading} product={product as ProductType} />
+      </header>
 
       <section>
         <h3 className="text-4xl font-bold underline mb-6">Details</h3>

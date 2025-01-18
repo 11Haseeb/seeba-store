@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useTransition } from "react";
-import BasicDetails from "./_components/customer-details";
-import { useForm } from "react-hook-form";
+import CustomerDetails from "./_components/customer-details";
+import { Control, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { OrderSchema, OrderSchemaType } from "@/schemas/orderSchema";
 import axios from "axios";
@@ -45,7 +45,6 @@ const Checkout = () => {
           });
           onRefetch();
           setIsOrdered(true);
-          console.log(response);
         }
       } catch (error) {
         if (axios.isAxiosError(error)) {
@@ -78,12 +77,12 @@ const Checkout = () => {
                 >
                   <div className="space-y-4">
                     <h3 className="text-xl font-bold">Customer Details</h3>
-                    <BasicDetails control={control} />
+                    <CustomerDetails control={control as Control} />
                   </div>
                   <Separator />
                   <div className="space-y-4">
                     <h3 className="text-xl font-bold">Address</h3>
-                    <Address control={control} />
+                    <Address control={control as Control} />
                   </div>
                   <Button
                     aria-label={pending ? "Confirming Order" : "Confirm Order"}

@@ -26,7 +26,7 @@ const CartItems = ({
       }  border rounded`}
     >
       {showBox && (
-        <div className="grid place-items-center space-y-2">
+        <div className="grid place-items-center text-center space-y-2">
           <h5 className="semibold">
             {!userId
               ? "Login to view your cart items."

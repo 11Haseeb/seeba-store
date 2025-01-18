@@ -37,7 +37,7 @@ const RecentlyAdded = () => {
           ? Array.from({ length: 4 }).map((_, index) => (
               <CarouselItem
                 key={index + 1}
-                className="basis-1/2 sm:basis-1/2 md:basis-1/3"
+                className="basis-full sm:basis-1/2 md:basis-1/3"
               >
                 <Skeleton className="h-[300px]" />
               </CarouselItem>
@@ -46,7 +46,7 @@ const RecentlyAdded = () => {
               return (
                 <CarouselItem
                   key={product.name.toLowerCase().replace(" ", "-")}
-                  className="basis-1/2 sm:basis-1/2 md:basis-1/3"
+                  className="basis-full sm:basis-1/2 md:basis-1/3"
                 >
                   <ProductCard product={product} />
                 </CarouselItem>

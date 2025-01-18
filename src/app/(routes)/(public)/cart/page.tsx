@@ -15,7 +15,7 @@ const Cart = () => {
     <section>
       <div className="px-2 md:px-4 lg:px-8 py-12">
         <h2 className="text-4xl font-bold text-center mb-10">Cart</h2>
-        <div className="flex max-md:flex-wrap justify-between">
+        <div className="flex max-md:flex-wrap justify-between gap-8">
           <div className="w-[68%] max-md:w-full space-y-3">
             {loading
               ? Array.from({ length: 2 }).map((_, index) => {
