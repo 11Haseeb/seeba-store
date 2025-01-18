@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header className="bg-gray-50">
       <div className="px-4 py-24 grid place-items-center">
-        <div className="grid place-items-center gap-2">
+        <div className="grid place-items-center gap-2 text-center">
           <h2 className="text-4xl font-bold">Welcome to our store</h2>
           <p className="text-lg text-muted-foreground">
             We offer a wide range of products for you to choose from
