@@ -14,7 +14,7 @@ const Products = () => {
   return (
     <section>
       <div className="px-2 md:px-6 lg:px-8 py-12">
-        <div className="mb-8 flex justify-between items-center">
+        <div className="mb-8 flex max-sm:flex-wrap sm:justify-between items-center gap-4">
           <SearchBar
             search={search}
             setSearch={setSearch}

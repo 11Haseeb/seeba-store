@@ -32,7 +32,7 @@ const Customers = () => {
   return (
     <section>
       <div>
-        <div className="mb-8 flex flex-col sm:flex-row justify-between items-center">
+        <div className="mb-8 flex max-sm:flex-wrap sm:justify-between items-center gap-2">
           <SearchBar search={search} setSearch={setSearch} />
           <SortDropdown setSort={setSort} />
         </div>

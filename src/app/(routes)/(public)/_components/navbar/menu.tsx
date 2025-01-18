@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const Menu = ({ onClose }: { onClose: () => void }) => {
   const pathname = usePathname();
-  const navLinks = ["Home", "Products", "Checkout", "Contact Us"];
+  const navLinks = ["Home", "Products", "Checkout"];
 
   return (
     <ul className="flex flex-col lg:flex-row gap-4 max-lg:px-4">

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Navbar from "./_components/navbar/navbar";
+import Footer from "./_components/footer/footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,6 +16,7 @@ export default function PublicLayout({
     <>
       <Navbar />
       {children}
+      <Footer />
     </>
   );
 }

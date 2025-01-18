@@ -22,7 +22,7 @@ const ListedProducts = () => {
   return (
     <section>
       <div>
-        <div className="mb-8 flex max-sm:flex-wrap justify-between items-center">
+        <div className="mb-8 flex max-sm:flex-wrap sm:justify-between items-center gap-2">
           <SearchBar search={search} setSearch={setSearch} />
           <ProductsSortDropdown setSort={setSort} />
         </div>
