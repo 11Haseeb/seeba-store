@@ -1,7 +1,6 @@
 import { ArrowLeft, BookCheckIcon, ShoppingBag } from "lucide-react";
 import React from "react";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
 const CartFooter = () => {
   const buttons = [
@@ -22,9 +21,9 @@ const CartFooter = () => {
             variant={name === "checkout" ? "default" : "outline"}
             asChild
           >
-            <Link href={`/${url}`}>
+            <a href={`/${url}`}>
               {Icon} {label}
-            </Link>
+            </a>
           </Button>
         );
       })}

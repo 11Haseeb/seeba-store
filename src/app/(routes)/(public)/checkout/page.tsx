@@ -2,7 +2,7 @@
 
 import React, { useState, useTransition } from "react";
 import CustomerDetails from "./_components/customer-details";
-import { Control, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { OrderSchema, OrderSchemaType } from "@/schemas/orderSchema";
 import axios from "axios";
@@ -17,6 +17,7 @@ import PaymentInfo from "./_components/payment-info";
 import { useCartRefetch } from "@/store/refetchStates";
 import ConfirmationMessage from "./_components/confirmation-message";
 import EmptyCart from "./_components/empty-cart";
+import AuthLoader from "@/components/loaders/auth-loader/AuthLoader";
 
 const Checkout = () => {
   const [isOrdered, setIsOrdered] = useState(false);
@@ -63,7 +64,9 @@ const Checkout = () => {
       <div className="px-2 sm:px-4 md:px-6 lg:px-8 py-12">
         <h1 className="text-3xl text-center font-bold mb-12">Checkout</h1>
 
-        {!loading && cartProducts.length === 0 ? (
+        {loading ? (
+          <AuthLoader />
+        ) : !loading && cartProducts.length === 0 ? (
           <EmptyCart />
         ) : !isOrdered && !loading ? (
           <div className="flex max-md:flex-wrap gap-4">
@@ -77,19 +80,21 @@ const Checkout = () => {
                 >
                   <div className="space-y-4">
                     <h3 className="text-xl font-bold">Customer Details</h3>
-                    <CustomerDetails control={control as Control} />
+                    <CustomerDetails control={control} />
                   </div>
                   <Separator />
                   <div className="space-y-4">
                     <h3 className="text-xl font-bold">Address</h3>
-                    <Address control={control as Control} />
+                    <Address control={control} />
                   </div>
                   <Button
                     aria-label={pending ? "Confirming Order" : "Confirm Order"}
                     disabled={pending}
                   >
                     {pending ? (
-                      <Loader className="animate-spin" />
+                      <>
+                        Confirming <Loader className="animate-spin" />
+                      </>
                     ) : (
                       "Confirm Order"
                     )}

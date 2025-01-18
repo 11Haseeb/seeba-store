@@ -20,7 +20,7 @@ const Address = ({ control }: { control: Control }) => {
   const provinces = ["Punjab", "Sindh", "Balochistan", "Khyber Pakhtunkhwa"];
 
   return (
-    <div className="flex flex-col space-y-4">
+    <div className="space-y-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-4">
         <FormField
           control={control}
@@ -65,7 +65,7 @@ const Address = ({ control }: { control: Control }) => {
         />
       </div>
 
-      <div className="grid grid-cols-2 gap-2 md:gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-4">
         <FormField
           control={control}
           name="area"
@@ -94,7 +94,7 @@ const Address = ({ control }: { control: Control }) => {
         />
       </div>
 
-      <div className="grid grid-cols-2 gap-2 md:gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-4">
         <FormField
           control={control}
           name="house"
