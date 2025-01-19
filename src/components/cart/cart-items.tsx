@@ -4,7 +4,6 @@ import React from "react";
 import { useAuth } from "@clerk/nextjs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "../ui/button";
-import Link from "next/link";
 import { Product } from "@prisma/client";
 import CartProductCard, { ProductWithQuantity } from "./cart-product-card";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -35,7 +34,7 @@ const CartItems = ({
               : null}
           </h5>
           <Button size="sm" asChild>
-            <Link
+            <a
               href={`/${
                 !userId
                   ? "sign-in"
@@ -49,7 +48,7 @@ const CartItems = ({
                 : cartProducts.length === 0
                 ? "Shop Now"
                 : null}
-            </Link>
+            </a>
           </Button>
         </div>
       )}

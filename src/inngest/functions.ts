@@ -125,7 +125,7 @@ export const createOrder = inngest.createFunction(
       });
     });
 
-    const updatedCart = await step.run("Update  Cart", async () => {
+    const updatedCart = await step.run("Update Cart", async () => {
       return await prisma.cart.update({
         where: { addedBy },
         data: { cartProducts: [], totalPrice: 0 },

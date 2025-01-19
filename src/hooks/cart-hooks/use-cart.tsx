@@ -13,7 +13,7 @@ const useCart = () => {
   const [cartProducts, setCartProducts] = useState<Product[]>([]);
 
   const { refetch, offRefetch } = useCartRefetch();
-
+  
   useEffect(() => {
     if (!isSignedIn) return;
 
