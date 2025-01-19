@@ -104,8 +104,8 @@ export const createOrder = inngest.createFunction(
       totalPrice,
     } = body;
 
-    const result = await step.run("Create Order", async () => {
-      const createdOrder = await prisma.order.create({
+    const createdOrder = await step.run("Create Order", async () => {
+      return await prisma.order.create({
         data: {
           customerName,
           customerEmail,
@@ -123,17 +123,15 @@ export const createOrder = inngest.createFunction(
           totalPrice,
         },
       });
-
-      if (createdOrder) {
-        const updatedCart = await prisma.cart.update({
-          where: { addedBy },
-          data: { cartProducts: [], totalPrice: 0 },
-        });
-
-        return updatedCart;
-      }
     });
 
-    return result;
+    const updatedCart = await step.run("Update  Cart", async () => {
+      return await prisma.cart.update({
+        where: { addedBy },
+        data: { cartProducts: [], totalPrice: 0 },
+      });
+    });
+
+    return { createdOrder, updatedCart };
   }
 );

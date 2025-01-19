@@ -21,8 +21,8 @@ const useRemoveFromCart = ({ productId }: { productId: string }) => {
             title: response.statusText,
             description: response.data.message,
           });
+          onRefetch();
         }
-        onRefetch();
       } catch (error) {
         if (axios.isAxiosError(error)) {
           toast({

@@ -9,21 +9,21 @@ interface RefetchStates {
 
 // Use Products Refetch
 const useProductsRefetch = create<RefetchStates>((set) => ({
-  refetch: false,
+  refetch: true,
   offRefetch: () => set({ refetch: false }),
   onRefetch: () => set({ refetch: true }),
 }));
 
 // Use Customers Refetch
 const useCustomersRefetch = create<RefetchStates>((set) => ({
-  refetch: false,
+  refetch: true,
   offRefetch: () => set({ refetch: false }),
   onRefetch: () => set({ refetch: true }),
 }));
 
 // Use Cart Refetch
 const useCartRefetch = create<RefetchStates>((set) => ({
-  refetch: false,
+  refetch: true,
   offRefetch: () => set({ refetch: false }),
   onRefetch: () => set({ refetch: true }),
 }));

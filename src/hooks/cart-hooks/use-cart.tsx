@@ -15,41 +15,39 @@ const useCart = () => {
   const { refetch, offRefetch } = useCartRefetch();
 
   useEffect(() => {
-    const fetchCart = () => {
-      if (!isSignedIn) return;
+    if (!isSignedIn) return;
 
-      start(async () => {
-        const cartResponse = await axios.get(`/api/cart`);
+    start(async () => {
+      const cartResponse = await axios.get(`/api/cart`);
 
-        if (cartResponse.status === 200) {
-          const cartData = cartResponse.data.data;
-          setCart(cartData);
-          offRefetch();
+      if (cartResponse.status === 200) {
+        const cartData = cartResponse.data.data;
+        setCart(cartData);
 
-          if (cartData?.cartProducts && cartData.cartProducts.length > 0) {
-            const cartProductsResponse = await Promise.all(
-              cartData.cartProducts.map(async (cartProduct: CartProduct) => {
-                const productResponse = await axios.get(
-                  `/api/product?id=${cartProduct.productId}`
-                );
+        if (cartData?.cartProducts && cartData.cartProducts.length > 0) {
+          const cartProductsResponse = await Promise.all(
+            cartData.cartProducts.map(async (cartProduct: CartProduct) => {
+              const productResponse = await axios.get(
+                `/api/product?id=${cartProduct.productId}`
+              );
 
-                if (productResponse.status === 200) {
-                  return {
-                    ...productResponse.data.data,
-                    quantity: cartProduct.quantity,
-                  };
-                }
-              })
-            );
+              if (productResponse.status === 200) {
+                return {
+                  ...productResponse.data.data,
+                  quantity: cartProduct.quantity,
+                };
+              }
+            })
+          );
 
-            setCartProducts(cartProductsResponse);
-          }
+          setCartProducts(cartProductsResponse);
+        } else {
+          setCartProducts([]);
         }
-      });
-    };
-
-    fetchCart();
-  },[refetch, offRefetch, isSignedIn]);
+      }
+    });
+    offRefetch();
+  }, [refetch, isSignedIn]);
 
   return { loading, cart, cartProducts };
 };

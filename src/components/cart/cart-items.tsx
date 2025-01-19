@@ -59,8 +59,7 @@ const CartItems = ({
           ? Array.from({ length: 4 }).map((_, index) => {
               return <Skeleton key={index + 1} className="h-[80px]" />;
             })
-          : cartProducts.length !== 0 &&
-            cartProducts.map((cartProduct) => {
+          : cartProducts.map((cartProduct) => {
               return (
                 <CartProductCard
                   key={cartProduct.name.toLowerCase().replace(" ", "-")}
