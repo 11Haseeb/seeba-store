@@ -18,6 +18,7 @@ import { useCartRefetch } from "@/store/refetchStates";
 import ConfirmationMessage from "./_components/confirmation-message";
 import EmptyCart from "./_components/empty-cart";
 import AuthLoader from "@/components/loaders/auth-loader/AuthLoader";
+import { useRouter } from "next/navigation";
 
 const Checkout = () => {
   const [isOrdered, setIsOrdered] = useState(false);
@@ -27,6 +28,7 @@ const Checkout = () => {
   const { control, handleSubmit } = form;
   const { toast } = useToast();
   const { onRefetch } = useCartRefetch();
+  const { refresh } = useRouter();
 
   const onValid = (data: OrderSchemaType) => {
     start(async () => {
@@ -44,8 +46,9 @@ const Checkout = () => {
             title: response.statusText,
             description: response.data.message,
           });
-          onRefetch();
           setIsOrdered(true);
+          refresh();
+          onRefetch();
         }
       } catch (error) {
         if (axios.isAxiosError(error)) {
