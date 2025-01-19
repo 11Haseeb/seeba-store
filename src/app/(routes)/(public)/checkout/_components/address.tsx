@@ -16,7 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-const Address = ({ control }: { control: Control }) => {
+const Address = ({ control }: { control: Control<any> }) => {
   const provinces = ["Punjab", "Sindh", "Balochistan", "Khyber Pakhtunkhwa"];
 
   return (
